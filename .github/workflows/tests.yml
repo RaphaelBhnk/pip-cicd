@@ -23,3 +23,12 @@ jobs:
 
       - name: Run tests
         run: npm test
+      # Étape exécutée seulement si les tests réussissent
+      - name: Success message
+        if: success()
+        run: echo "✅ Tous les tests sont passés avec succès ! 🎉"
+
+      # Étape exécutée seulement si les tests échouent
+      - name: Failure message
+        if: failure()
+        run: echo "❌ Les tests ont échoué. Merci de corriger avant de merger."
